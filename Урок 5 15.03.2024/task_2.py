@@ -9,4 +9,3 @@ def create_dict(text: str) -> dict[str: int]:
 text = 'jkhflahhff;akjkkhfj'
 my_dict = create_dict(text)
 print(my_dict)
-dict_iter = iter(my_dict)
