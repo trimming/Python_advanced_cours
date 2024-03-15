@@ -6,4 +6,3 @@
 gen = (i for i in range(101) if i % 2 == 0 and (i % 10 + i // 10) != 8)
 for num in gen:
     print(num, end=' ')
-
