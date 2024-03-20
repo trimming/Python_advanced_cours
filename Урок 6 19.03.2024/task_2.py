@@ -7,7 +7,6 @@ from sys import argv
 def gen_num(from_num: int, before_num: int, count=3) -> bool:
     result = randint(from_num, before_num)
     while count > 0:
-        count -= 1
         user_num = int(input(f'Попробуйте угадать число от {from_num} до {before_num}:\n'))
         if user_num > result:
             print('Меньше')
@@ -15,8 +14,8 @@ def gen_num(from_num: int, before_num: int, count=3) -> bool:
             print('Больше')
         else:
             return True
-    else:
-        return False
+        count -= 1
+    return False
 
 
 args = [int(i) for i in argv if i.isdigit()]

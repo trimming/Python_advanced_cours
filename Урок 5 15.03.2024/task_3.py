@@ -17,3 +17,4 @@ dict_iter = iter(my_dict.items())
 for i in range(COUNT):
     print(next(dict_iter))
           
+print(__name__)
