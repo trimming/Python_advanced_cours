@@ -6,6 +6,8 @@
 ##✔ Количество строк и имя файла передаются как аргументы функции.
 
 import random as rd
+
+
 ##def fill_file(num_lines: int, file_name: str):
 ##    with open(file_name, 'w+', encoding='utf-8') as f:
 ##        for i in range(num_lines):
@@ -56,9 +58,8 @@ import random as rd
 ##сколько в более длинном файле.
 ##✔ При достижении конца более короткого файла,
 ##возвращайтесь в его начало.
-    
 
-    
+
 ##def read_files():
 ##    with open('names.txt', 'r', encoding='utf-8') as f1, \
 ##          open('test.txt', 'r', encoding='utf-8') as f2, \
@@ -84,19 +85,5 @@ import random as rd
 ##✔ Имя файла и его размер должны быть в рамках переданного диапазона
 
 
-def 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def created_files(add, min_len_name=6, max_len_name=30, min_size=256, max_size=4096, num_files=42):
+    pass
