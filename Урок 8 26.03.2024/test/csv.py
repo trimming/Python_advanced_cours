@@ -5,8 +5,9 @@ import csv
 ##with open('biostats.csv', 'r', newline='') as f:
 ##    csv_file = csv.reader(f)
 ##    for line in csv_file:
-##        print(line)
-##    print(type(line))  
+##        print(line)
+##    print(type(line))
+
 
 #########  Добавим несколько параметров для его чтения  #######
 
@@ -15,7 +16,7 @@ import csv
 ##    quoting=csv.QUOTE_NONNUMERIC)
 ##    for line in csv_file:
 ##        print(line)
-##    print(type(line))
+##    print(type(line))
 
 
 ###########  Запись CSV  ##########################
@@ -36,7 +37,7 @@ import csv
 ##        for j in range(2, 4 + 1):
 ##            line[j] = int(line[j])
 ##        all_data.append(line)
-##    csv_write.writerows(all_data)
+##    csv_write.writerows(all_data)
 
 
 ##########  Чтение CSV в словарь  ###################
@@ -49,7 +50,8 @@ import csv
 ##        print(f'{line["name"] = }\t{line["age"] = }')
 
 
-##########  Запись из словаря  ######################
+##########  Запись из словаря
+######################
 
 ##with (
 ##    open('biostats_tab.csv', 'r', newline='') as f_read,
@@ -67,25 +69,17 @@ import csv
 ##            dict_row['id'] = i
 ##            dict_row['age'] += 1
 ##            all_data.append(dict_row)
-##    csv_write.writerows(all_data)
+##    csv_write.writerows(all_data)
 
 
 ########### ЗАДАНИЕ ##################################
 
-##with open('quest.csv', 'w', newline='', encoding='utf-8') as f_write:
-##    csv_write = csv.DictWriter(f_write, fieldnames=["number", "name", "data"], restval='Hello world!', dialect='excel',
-##        delimiter='#', quotechar='=', quoting=csv.QUOTE_NONNUMERIC)
-##    csv_write.writeheader()
-##    dict_row = {}
-##    for i in range(10):
-##        dict_row['number'] = i
-##        dict_row['name'] = str(i)
-##        csv_write.writerow(dict_row)
-
-
-
-
-
-
-
-    
+with open('quest.csv', 'w', newline='', encoding='utf-8') as f_write:
+    csv_write = csv.DictWriter(f_write, fieldnames=["number", "name", "data"], restval='Hello world!', dialect='excel',
+                               delimiter='#', quotechar='=', quoting=csv.QUOTE_NONNUMERIC)
+    csv_write.writeheader()
+    dict_row = {}
+    for i in range(10):
+        dict_row['number'] = i
+        dict_row['name'] = str(i)
+        csv_write.writerow(dict_row)
