@@ -1,8 +1,8 @@
 import shutil
 import json
 
-shutil.copy('D:\\GB\\Python погружение\\Python_advanced_cours\\Урок 7 22.03.2024\\result.txt',
-            'D:\\GB\\Python погружение\\Python_advanced_cours\\Урок 8 26.03.2024')
+##shutil.copy('D:\\GB\\Python погружение\\Python_advanced_cours\\Урок 7 22.03.2024\\result.txt',
+##            'D:\\GB\\Python погружение\\Python_advanced_cours\\Урок 8 26.03.2024')
 
 
 def get_dict(file):
