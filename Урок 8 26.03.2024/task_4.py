@@ -9,18 +9,17 @@
 # Имя исходного и конечного файлов передавайте как аргументы
 # функции.
 import csv
-
+import json
 
 def new_user_json(input_file_name: str, output_file_name: str):
-    with(
-        open(input_file_name,'r', encoding='utf-8') as input_csv_data,
-        open(output_file_name, 'w', encoding='utf-8') as output_json_file
-    ):
-        data = []
-        csv_reader = csv.reader(input_csv_data)
+    with open(input_file_name,'r', encoding='utf-8', newline='') as in_csv_data, \
+        open(output_file_name, 'w', encoding='utf-8') as out_json_file:
+        data = {}
+        csv_reader = csv.reader(in_csv_data)
         for i, row in enumerate(csv_reader):
             if i:
-                data.append(row)
-        print(data)
+                user_data = [row[0].lower(), row[1].zfill(10), row[2]]                
+                data[hash(user_data[0] + user_data[1])] = user_data
+        json.dump(data, out_json_file, indent=4, ensure_ascii=False, sort_keys=True) 
 
-new_user_json()
+new_user_json('users_list.csv', 'res.json')

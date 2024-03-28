@@ -7,15 +7,14 @@ import csv
 
 
 def convert_to_csv(json_file, csv_file):
-    with (
-        open(json_file, 'r', encoding='utf-8') as user_json,
-        open(csv_file, 'w', encoding='utf-8') as user_csv
-    ):
+    with open(json_file, 'r', encoding='utf-8') as user_json,\
+        open(csv_file, 'w', newline='', encoding='utf-8') as user_csv:
         data = json.load(user_json)
+        print(data)
         csv_writer = csv.writer(user_csv)
         csv_writer.writerow(['name', 'ID', 'level'])
-        for user_lvl, user in data.items():
-            for user_id, user_name in user.items():
+        for user_lvl, users in data.items():
+            for user_id, user_name in users.items():
                 csv_writer.writerow([user_name, user_id, user_lvl])
 
 
