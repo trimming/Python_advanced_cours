@@ -1,0 +1,20 @@
+{
+    "1": {
+        "func_name": "user_quest",
+        "result": 70,
+        "args": [
+            120,
+            2
+        ],
+        "kwargs": {}
+    },
+    "2": {
+        "func_name": "user_quest",
+        "result": 100,
+        "args": [
+            120,
+            2
+        ],
+        "kwargs": {}
+    }
+}
