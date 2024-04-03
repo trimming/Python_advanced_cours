@@ -35,9 +35,9 @@ def writer_json(func):
     return wrapper
 
 
-# @writer_json
-# def summa_args(*args, **kwargs):
-#     return sum(args[0])
-#
-#
-# summa_args(1, 3, 2, 2, 5, 10, 8, 9, k='6', l='8')
+@writer_json
+def summa_args(*args, **kwargs):
+    return sum(args)
+
+
+summa_args(1, 3, 2, 2, 5, 10, 8, 9, k='6', l='8')
