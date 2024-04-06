@@ -27,6 +27,7 @@ class Archive:
         def __repr__(self):
             return f'REPR: {self.number} {self.letter}'
 
+
 a = Archive(1, 'a')
 b = Archive(2, 'b')
 
