@@ -12,7 +12,7 @@ class Archive:
         cls.archive_number.append(args[1])
         return cls._instance
 
-    def __init__(self, text: str, number: int | float):
+    def __init__(self, text: str, number: float):
         self.text = text
         self.number = number
 
