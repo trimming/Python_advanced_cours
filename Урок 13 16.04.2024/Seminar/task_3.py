@@ -13,12 +13,12 @@ class UserException(Exception):
 
 class LevelError(UserException):
     def __init__(self, value: int):
-        super().__init__(f'Неверное значение: {value}')
+        super().__init__(f'Ошибка доступа: {value}')
 
 
 class AccessError(UserException):
-    def __init__(self, level: str):
-        super().__init__(f'Ошибка доступа: {level}')
+    def __init__(self, name: str, u_id: str):
+        super().__init__(f'Пользователя с таким именем ({name}) и ID({u_id}) не существует')
 
 
 raise LevelError(4)
