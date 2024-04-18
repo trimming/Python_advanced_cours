@@ -12,8 +12,8 @@ class UserException(Exception):
 
 
 class LevelError(UserException):
-    def __init__(self, value: int):
-        super().__init__(f'Ошибка доступа: {value}')
+    def __init__(self, my_level: int, new_level: int):
+        super().__init__(f'Ошибка доступа! Уровень нового пользователя ({new_level}) меньше вашего уровня ({my_level})')
 
 
 class AccessError(UserException):
@@ -21,4 +21,11 @@ class AccessError(UserException):
         super().__init__(f'Пользователя с таким именем ({name}) и ID({u_id}) не существует')
 
 
-raise LevelError(4)
+class IdError(UserException):
+    def __init__(self, u_id: str):
+        super().__init__(f'Пользователя с таким ID({u_id}) уже существует')
+
+
+
+    
+##raise LevelError(4)

@@ -17,11 +17,11 @@ class User:
         self.lvl = u_lvl
 
     def __hash__(self):
-        return hash(self.name + self.id)
+        return hash(self.name)
 
     def __eq__(self, other):
         if isinstance(other, type(self)):
-            return self.__hash__() == other.__hash__()
+            return self.id == other.id
 
     def __repr__(self):
         return f'{self.name} (ID: {self.id}, Уровень доступа: {self.lvl})'
@@ -30,7 +30,7 @@ def input_name(message: str) -> str:
     return input(message)
 
 
-def input_lvl(message: str, error_message: str, limits: tuple[int, int]) -> str:
+def input_lvl(message: str, error_message: str, limits):
     while True:
         level = input(message)
         if level.isdigit() and limits[0] <= int(level) <= limits[1]:
@@ -38,7 +38,7 @@ def input_lvl(message: str, error_message: str, limits: tuple[int, int]) -> str:
         print(error_message)
 
 
-def input_id(message: str, error_message, id_is_exists: str, id_list: list[str]) -> str:
+def input_id(message: str, error_message, id_is_exists: str, id_list):
     while True:
         user_id = input(message)
         if user_id.isdigit():
@@ -87,4 +87,4 @@ def make_user_from_json(file_name: str):
     return result
 
 
-print(make_user_from_json('users_list.json'))
+##print(make_user_from_json('users_list.json'))
