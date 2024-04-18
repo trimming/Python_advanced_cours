@@ -26,6 +26,8 @@ class IdError(UserException):
         super().__init__(f'Пользователя с таким ID({u_id}) уже существует')
 
 
-
+class LoginError(UserException):
+    def __init__(self):
+        super().__init__(f'Пользователя не залогирован!')
     
 ##raise LevelError(4)
