@@ -1,4 +1,13 @@
 # Введите ваше решение ниже
+class NegativeValueError(ValueError):
+    def __init__(self, message: str):
+        self.message = message
+
+    def __str__(self):
+        return f'{self.message}'
+
+
+
 
 class Rectangle:
     """
@@ -21,15 +30,41 @@ class Rectangle:
     """
 
     def __init__(self, width, height=None):
-        if width > 0 and height > 0:
-            self.width = width
-            if height is None:
-                self.height = width
-            else:
-                self.height = height
+        if width > 0:
+            self._width = width            
         else:
-            raise NegativeValueError()
+            raise NegativeValueError(f'Ширина должна быть положительной, а не {width}')
+        
+        if height > 0:
+            if height is None:
+                self._height = width
+            else:
+                self._height = height
+        else:
+            raise NegativeValueError(f'Высота должна быть положительной, а не {height}')
 
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, value):
+        if value > 0:
+            self._width = value
+        else:
+            raise NegativeValueError(f'Ширина должна быть положительной, а не {value}')
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, value):
+        if value > 0:
+            self._height = value
+        else:
+            raise NegativeValueError(f'Высота должна быть положительной, а не {value}')    
+                
     def perimeter(self):
         """
         Вычисляет периметр прямоугольника.
@@ -135,17 +170,17 @@ class Rectangle:
         return f"Rectangle({self.width}, {self.height})"
 
 
-r = Rectangle(-2)
+#r = Rectangle(-2)
 # __main__.NegativeValueError: Ширина должна быть положительной, а не -2
 
 
-r1 = Rectangle(5, -3)
+#r1 = Rectangle(5, -3)
 # __main__.NegativeValueError: Высота должна быть положительной, а не -3
 
 r2 = Rectangle(4, 4)
-r2.width = -3
+##r2.width = -12
 # __main__.NegativeValueError: Ширина должна быть положительной, а не -3
 
 r3 = Rectangle(4, 4)
-r3.height = -3
+r3.height = -10
 # __main__.NegativeValueError: Высота должна быть положительной, а не -3
