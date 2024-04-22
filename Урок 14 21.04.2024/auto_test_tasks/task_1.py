@@ -14,7 +14,28 @@ class Rectangle:
     >>> r1=Rectangle(5)
     >>> r1.width
     5
-
+    >>> r4=Rectangle(-2)
+    'NegativeValueError: Ширина должна быть положительной, а не -2'
+    >>> r2=Rectangle(3, 4)
+    >>> r2.width
+    3
+    >>> r2.height
+    4
+    >>> r1.perimeter()
+    20
+    >>> r2.perimeter()
+    14
+    >>> r1.area()
+    25
+    >>> r2.area()
+    12
+    >>> r3=r1+r2
+    >>> r3.width
+    8
+    >>> r3.height
+    6.0
+    
+    
     """
     
     def __init__(self, width, height=None):
@@ -23,13 +44,14 @@ class Rectangle:
             self.width = width            
         else:
             raise NegativeValueError(f'Ширина должна быть положительной, а не {width}')        
-        if height > 0:
-            if height is None:
-                self.height = width
-            else:
-                self.height = height
+        
+        if height is None:
+            self.height = width
         else:
-            raise NegativeValueError(f'Высота должна быть положительной, а не {height}')
+            if height > 0:
+                self.height = height
+            else:
+                raise NegativeValueError(f'Высота должна быть положительной, а не {height}')
 
     def perimeter(self):
         """
@@ -135,7 +157,9 @@ class Rectangle:
         """
         return f"Rectangle({self.width}, {self.height})"
 
+a = Rec
 
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=False)    
+
+##if __name__ == '__main__':
+##    import doctest
+##    doctest.testmod(verbose=True)    
