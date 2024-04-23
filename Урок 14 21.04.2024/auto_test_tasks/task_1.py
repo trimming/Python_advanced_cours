@@ -1,44 +1,31 @@
 ##import doctest
 
-
-class NegativeValueError(ValueError):
-    def __init__(self, message: str):
-        self.message = message
-
-    def __str__(self):
-        return f'{self.message}'
-
-
-class Rectangle:
-    """
-    >>> r1=Rectangle(5)
-    >>> r1.width
-    5
-    >>> r4=Rectangle(-2)
-    'NegativeValueError: Ширина должна быть положительной, а не -2'
-    >>> r2=Rectangle(3, 4)
-    >>> r2.width
-    3
-    >>> r2.height
-    4
-    >>> r1.perimeter()
-    20
-    >>> r2.perimeter()
-    14
-    >>> r1.area()
-    25
-    >>> r2.area()
-    12
-    >>> r3=r1+r2
-    >>> r3.width
-    8
-    >>> r3.height
-    6.0
     
-    
-    """
+class NegativeValueError(Exception):
+    pass
+
+
+class Rectangle:    
     
     def __init__(self, width, height=None):
+        """
+        >>> r1=Rectangle(5.0)
+        >>> r1.width
+        5.0
+        >>> r2=Rectangle(3.0, 4.0)
+        >>> r2.width
+        3.0
+        >>> r2.height
+        4.0
+        >>> r3 = Rectangle(-2)
+        Traceback (most recent call last):
+        ...
+        NegativeValueError: Ширина должна быть положительной, а не -2
+        >>> r4 = Rectangle(5, -3)
+        Traceback (most recent call last):
+        ...
+        NegativeValueError: Высота должна быть положительной, а не -3
+        """
         
         if width > 0:
             self.width = width            
@@ -55,31 +42,35 @@ class Rectangle:
 
     def perimeter(self):
         """
-        Вычисляет периметр прямоугольника.
-
-        Возвращает:
-        - int: периметр прямоугольника
+        >>> r1=Rectangle(5.0)
+        >>> r1.perimeter()
+        20.0
+        >>> r2=Rectangle(3.0, 4.0)
+        >>> r2.perimeter()
+        14.0
         """
         return 2 * (self.width + self.height)
 
     def area(self):
         """
-        Вычисляет площадь прямоугольника.
-
-        Возвращает:
-        - int: площадь прямоугольника
+        >>> r1=Rectangle(5.0)
+        >>> r1.area()
+        25.0
+        >>> r2=Rectangle(3.0, 4.0)
+        >>> r2.area()
+        12.0
         """
         return self.width * self.height
 
     def __add__(self, other):
         """
-        Определяет операцию сложения двух прямоугольников.
-
-        Аргументы:
-        - other (Rectangle): второй прямоугольник
-
-        Возвращает:
-        - Rectangle: новый прямоугольник, полученный путем сложения двух исходных прямоугольников
+        >>> r1=Rectangle(5.0)
+        >>> r2=Rectangle(3.0, 4.0)
+        >>> r3=r1+r2
+        >>> r3.width
+        8.0
+        >>> r3.height
+        6.0
         """
         width = self.width + other.width
         perimeter = self.perimeter() + other.perimeter()
@@ -88,13 +79,13 @@ class Rectangle:
 
     def __sub__(self, other):
         """
-        Определяет операцию вычитания одного прямоугольника из другого.
-
-        Аргументы:
-        - other (Rectangle): вычитаемый прямоугольник
-
-        Возвращает:
-        - Rectangle: новый прямоугольник, полученный путем вычитания вычитаемого прямоугольника из исходного
+        >>> r1=Rectangle(5.0)
+        >>> r2=Rectangle(3.0, 4.0)
+        >>> r3=r1-r2
+        >>> r3.width
+        2.0
+        >>> r3.height
+        2.0
         """
         if self.perimeter() < other.perimeter():
             self, other = other, self
@@ -104,62 +95,33 @@ class Rectangle:
         return Rectangle(width, height)
 
     def __lt__(self, other):
-        """
-        Определяет операцию "меньше" для двух прямоугольников.
-
-        Аргументы:
-        - other (Rectangle): второй прямоугольник
-
-        Возвращает:
-        - bool: True, если площадь первого прямоугольника меньше площади второго, иначе False
-        """
+        
         return self.area() < other.area()
 
     def __eq__(self, other):
-        """
-        Определяет операцию "равно" для двух прямоугольников.
-
-        Аргументы:
-        - other (Rectangle): второй прямоугольник
-
-        Возвращает:
-        - bool: True, если площади равны, иначе False
-        """
+        
         return self.area() == other.area()
 
     def __le__(self, other):
-        """
-        Определяет операцию "меньше или равно" для двух прямоугольников.
-
-        Аргументы:
-        - other (Rectangle): второй прямоугольник
-
-        Возвращает:
-        - bool: True, если площадь первого прямоугольника меньше или равна площади второго, иначе False
-        """
+        
         return self.area() <= other.area()
 
     def __str__(self):
-        """
-        Возвращает строковое представление прямоугольника.
-
-        Возвращает:
-        - str: строковое представление прямоугольника
-        """
+       
         return f"Прямоугольник со сторонами {self.width} и {self.height}"
 
     def __repr__(self):
-        """
-        Возвращает строковое представление прямоугольника, которое может быть использовано для создания нового объекта.
-
-        Возвращает:
-        - str: строковое представление прямоугольника
-        """
+        
         return f"Rectangle({self.width}, {self.height})"
 
-a = Rec
 
 
-##if __name__ == '__main__':
-##    import doctest
-##    doctest.testmod(verbose=True)    
+
+    
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=False)    
+
+
+
