@@ -35,16 +35,15 @@ class Rectangle:
     >>> r3.height
     6.0
     
-    
     """
-    
+
     def __init__(self, width, height=None):
-        
+
         if width > 0:
-            self.width = width            
+            self.width = width
         else:
-            raise NegativeValueError(f'Ширина должна быть положительной, а не {width}')        
-        
+            raise NegativeValueError(f'Ширина должна быть положительной, а не {width}')
+
         if height is None:
             self.height = width
         else:
@@ -157,9 +156,8 @@ class Rectangle:
         """
         return f"Rectangle({self.width}, {self.height})"
 
-a = Rec
 
+if __name__ == '__main__':
+    import doctest
 
-##if __name__ == '__main__':
-##    import doctest
-##    doctest.testmod(verbose=True)    
+    doctest.testmod(verbose=True)
