@@ -21,7 +21,7 @@ logging.basicConfig(format=FORMAT, style='{', filename='log.log', filemode='a+',
 logger = logging.getLogger(__name__)
 
 
-def create_file_obj(user_path):
+def create_file_obj(user_path: str):
     if os.path.isdir(user_path):
         for dir_path, dir_name, file_name in os.walk(user_path):
             if len(dir_name) > 0:
@@ -39,4 +39,7 @@ def create_file_obj(user_path):
 
 
 if __name__ == '__main__':
-    create_file_obj('D:\GB\Python погружение\Python_advanced_cours\Урок 14 21.04.2024')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('param', metavar='path', type=str, nargs='*')
+    args = parser.parse_args()
+    create_file_obj(*args.param)
