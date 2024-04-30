@@ -27,12 +27,12 @@ def create_file_obj(user_path: str):
             if len(dir_name) > 0:
                 for dir_el in dir_name:
                     u_d = UserFile(dir_el, 'dir', dir_path.split('\\')[-1])
-                    data = f'Создан объект с именем - {u_d.file_name}, флагом:{u_d.ext} каталога "{u_d.parent_dir}"'
+                    data = f'Создан объект UserFile с именем - {u_d.file_name}, флагом:{u_d.ext} каталога "{u_d.parent_dir}"'
                     logger.info(data)
             if len(file_name) > 0:
                 for file_name_el in file_name:
                     u_f = UserFile(file_name_el, file_name_el.split('.')[-1], dir_path.split('\\')[-1])
-                    data = f'Создан объект с именем - {u_f.file_name}, расширением:{u_f.ext} каталога "{u_f.parent_dir}"'
+                    data = f'Создан объект UserFile с именем - {u_f.file_name}, расширением:{u_f.ext} каталога "{u_f.parent_dir}"'
                     logger.info(data)
     else:
         raise MyDirError(user_path)
