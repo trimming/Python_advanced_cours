@@ -12,6 +12,7 @@ from exception import *
 import logging
 from collections import namedtuple
 import os
+import argparse
 
 UserFile = namedtuple('UserFile', ['file_name', 'ext', 'parent_dir'])
 
@@ -37,4 +38,5 @@ def create_file_obj(user_path):
         raise MyDirError(user_path)
 
 
-create_file_obj('D:\GB\Python погружение\Python_advanced_cours\Урок 14 21.04.2024')
+if __name__ == '__main__':
+    create_file_obj('D:\GB\Python погружение\Python_advanced_cours\Урок 14 21.04.2024')
